@@ -86,4 +86,38 @@ HTML
   </div>
 
 </body>
+<script>
+    const postBtn = document.getElementById('postBtn');
+    const postInput = document.getElementById('postInput');
+    const feedContainer = document.getElementById('feedContainer');
+
+    postBtn.addEventListener('click', () => {
+      const text = postInput.value.trim();
+      
+      if (text === '') {
+        alert('Please write something before posting!');
+        return;
+      }
+
+      // Create new post element
+      const newPost = document.createElement('div');
+      newPost.className = 'bg-slate-900 border border-slate-800 p-4 rounded-lg space-y-2 border-l-4 border-l-rose-500 transition-all';
+      
+      newPost.innerHTML = `
+        <div class="flex justify-between items-center text-xs">
+          <span class="font-bold text-rose-400">@gustavo</span>
+          <span class="text-slate-500">Just now</span>
+        </div>
+        <p class="text-sm text-slate-300">${text}</p>
+      `;
+
+      // Add to top of feed
+      feedContainer.prepend(newPost);
+
+      // Clear textarea
+      postInput.value = '';
+    });
+  </script>
+</body>
+</html>
 </html>
